@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d2940">
+
+  <title>NeuroBridge Delaware | Cancer Care Organizer</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- SKIP NAVIGATION -->
+  <a class="skip" href="#main">Skip to main content</a>
+
+
+  <!-- HEADER -->
+  <header class="top">
+
+    <div class="brand">
+      <span class="logo">✳</span>
+      <span>
+        NeuroBridge
+        <small>DELAWARE</small>
+      </span>
+    </div>
+
+    <nav aria-label="Main navigation">
+      <a href="#dashboard">Home</a>
+      <a href="#appointments">Appointments</a>
+      <a href="#medications">Medicines</a>
+      <a href="#communicate">Communicate</a>
+      <a href="#library">Learn</a>
+    </nav>
+
+    <button
+      id="contrast"
+      class="quiet"
+      type="button"
+      aria-pressed="false">
+      High contrast
+    </button>
+
+    <button
+      id="font"
+      class="quiet"
+      type="button"
+      aria-pressed="false">
+      Larger text
+    </button>
+
+  </header>
+
+
+  <!-- MAIN CONTENT -->
+  <main id="main">
+
+
+    <!-- HERO SECTION -->
+    <section class="hero simple-hero">
+
+      <div>
+        <p class="eyebrow">NEUROBRIDGE DELAWARE</p>
+
+        <h1>What would you like to do?</h1>
+
+        <p>
+          Choose one of the large buttons below.
+          You can come back here any time.
+        </p>
+      </div>
+
+    </section>
+
+
+    <!-- QUICK ACCESS BUTTONS -->
+    <div class="quick-grid" aria-label="Main tasks">
+
+      <a class="quick-card" href="#appointments">
+        <span aria-hidden="true">📅</span>
+        <strong>My appointments</strong>
+        <small>See or add a visit</small>
+      </a>
+
+      <a class="quick-card" href="#medications">
+        <span aria-hidden="true">⏰</span>
+        <strong>My medicines</strong>
+        <small>See times from my care team</small>
+      </a>
+
+      <a class="quick-card featured" href="#communicate">
+        <span aria-hidden="true">💬</span>
+        <strong>Help me communicate</strong>
+        <small>Tap words or speak a message</small>
+      </a>
+
+      <a class="quick-card" href="#library">
+        <span aria-hidden="true">📖</span>
+        <strong>Learn about cancer</strong>
+        <small>Find reliable information</small>
+      </a>
+
+    </div>
+
+
+    <!-- IMPORTANT MEDICAL NOTICE -->
+    <div class="notice" role="note">
+
+      <strong>Important:</strong>
+
+      NeuroBridge is an educational and scheduling prototype,
+      not a medical device.
+
+      It never chooses medicine or doses.
+
+      Medication reminders work only while this page is open
+      and may be missed.
+
+      Continue using your usual reliable alarms and follow
+      your care team's instructions.
+
+    </div>
+
+
+    <!-- DASHBOARD SECTION -->
+    <section id="dashboard" class="section">
+
+      <div class="section-head">
+
+        <div>
+          <p class="eyebrow">OVERVIEW</p>
+          <h2>My schedule today</h2>
+        </div>
+
+        <button
+          class="btn secondary"
+          id="print"
+          type="button">
+          Print schedules
+        </button>
+
+      </div>
+
+
+      <!-- DASHBOARD STATISTICS -->
+      <div class="stats">
+
+        <article class="stat">
+          <span>Upcoming appointments</span>
+          <strong id="apptCount">0</strong>
+        </article>
+
+        <article class="stat">
+          <span>Medication times today</span>
+          <strong id="medCount">0</strong>
+        </article>
+
+        <article class="stat">
+          <span>Next scheduled item</span>
+          <strong id="nextItem">Nothing scheduled</strong>
+        </article>
+
+      </div>
+
+
+      <!-- TODAY'S SCHEDULE -->
+      <div class="panel">
+
+        <h3>Today at a glance</h3>
+
+        <div id="todayList" class="stack">
+          <p class="muted">No items scheduled yet.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- APPOINTMENTS SECTION -->
+    <section id="appointments" class="section">
+
+      <div class="section-head">
+
+        <div>
+          <p class="eyebrow">STAY ON TRACK</p>
+          <h2>Appointments</h2>
+
+          <p>
+            Enter the date and time confirmed
+            by your healthcare team.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="two">
+
+        <!-- ADD APPOINTMENT FORM -->
+        <form id="appointmentForm" class="panel form">
+
+          <h3>Add an appointment</h3>
+
+          <label>
+            Appointment name
+
+            <input
+              id="apptName"
+              maxlength="100"
+              required
+              placeholder="e.g., Follow-up visit">
+          </label>
+
+          <label>
+            Date and time
+
+            <input
+              id="apptWhen"
+              type="datetime-local"
+              required>
+          </label>
+
+          <label>
+            Location or meeting details
+
+            <input
+              id="apptPlace"
+              maxlength="150"
+              placeholder="Optional">
+          </label>
+
+          <label>
+            Notes
+
+            <textarea
+              id="apptNotes"
+              maxlength="500"
+              rows="3"
+              placeholder="Optional; avoid entering sensitive medical details"></textarea>
+          </label>
+
+          <button class="btn" type="submit">
+            Save appointment
+          </button>
+
+        </form>
+
+
+        <!-- UPCOMING APPOINTMENTS -->
+        <div class="panel">
+
+          <h3>Upcoming appointments</h3>
+
+          <div id="appointmentList" class="stack"></div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- MEDICATIONS SECTION -->
+    <section id="medications" class="section">
+
+      <div class="section-head">
+
+        <div>
+          <p class="eyebrow">FOLLOW YOUR PRESCRIBED PLAN</p>
+          <h2>My medicine times</h2>
+
+          <p>
+            Copy medication names and times directly
+            from your doctor or pharmacist's instructions.
+
+            This website does not determine when or
+            how much medicine to take.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="two">
+
+        <!-- ADD MEDICATION FORM -->
+        <form id="medicationForm" class="panel form">
+
+          <h3>Add a medication time</h3>
+
+          <label>
+            Medication name
+
+            <input
+              id="medName"
+              maxlength="100"
+              required
+              placeholder="As written on your prescription">
+          </label>
+
+          <label>
+            Time instructed
+
+            <input
+              id="medTime"
+              type="time"
+              required>
+          </label>
+
+          <label>
+            Schedule
+
+            <select id="medFrequency">
+              <option value="daily">
+                Every day (if instructed)
+              </option>
+
+              <option value="once">
+                One specific date
+              </option>
+            </select>
+          </label>
+
+          <label id="medDateWrap" hidden>
+            Date
+
+            <input
+              id="medDate"
+              type="date">
+          </label>
+
+          <label>
+            Instructions to remember (optional)
+
+            <textarea
+              id="medNotes"
+              maxlength="400"
+              rows="3"
+              placeholder="Copy only what your care team instructed"></textarea>
+          </label>
+
+          <button class="btn" type="submit">
+            Save medication time
+          </button>
+
+          <p class="muted tiny">
+            For multiple times per day, add a separate
+            entry for each prescribed time.
+
+            Complex or changing schedules may not
+            be supported.
+          </p>
+
+        </form>
+
+
+        <!-- SAVED MEDICATIONS -->
+        <div class="panel">
+
+          <h3>Saved medication times</h3>
+
+          <div id="medicationList" class="stack"></div>
+
+          <button
+            class="btn secondary"
+            id="enableReminders"
+            type="button">
+            Enable on-page reminders
+          </button>
+
+          <p
+            id="reminderStatus"
+            class="muted tiny"
+            aria-live="polite">
+
+            Reminders appear while this tab is open
+            and running.
+
+            They may be delayed or missed if the
+            device sleeps or the browser is closed.
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- COMMUNICATION SECTION -->
+    <section
+      id="communicate"
+      class="section communicate-section">
+
+      <div class="section-head">
+
+        <div>
+          <p class="eyebrow">SIMPLE COMMUNICATION</p>
+          <h2>Help me communicate</h2>
+
+          <p>
+            Tap a large button to show a message.
+            You can also choose to have your device
+            say it aloud.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="panel comm-panel">
+
+        <!-- COMMUNICATION CONTROLS -->
+        <div class="comm-actions">
+
+          <button
+            type="button"
+            id="speakToggle"
+            class="btn secondary"
+            aria-pressed="false">
+            🔈 Voice: off
+          </button>
+
+          <button
+            type="button"
+            id="stopSpeaking"
+            class="btn secondary">
+            Stop voice
+          </button>
+
+          <button
+            type="button"
+            id="clearMessage"
+            class="btn secondary">
+            Clear message
+          </button>
+
+        </div>
+
+
+        <!-- DISPLAY SELECTED MESSAGE -->
+        <div
+          id="messageDisplay"
+          class="message-display"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true">
+
+          Tap a message below.
+
+        </div>
+
+
+        <!-- COMMUNICATION PHRASE BUTTONS -->
+        <div
+          class="comm-grid"
+          id="commGrid"
+          aria-label="Communication phrases">
+        </div>
+
+
+        <!-- CUSTOM MESSAGE -->
+        <div class="custom-message">
+
+          <label for="customMessage">
+            Or type your own message
+          </label>
+
+          <textarea
+            id="customMessage"
+            rows="3"
+            maxlength="300"
+            placeholder="Type a short message here..."></textarea>
+
+
+          <div class="actions">
+
+            <button
+              type="button"
+              id="showCustom"
+              class="btn">
+              Show my message
+            </button>
+
+            <button
+              type="button"
+              id="speakCustom"
+              class="btn secondary">
+              Say my message aloud
+            </button>
+
+          </div>
+
+        </div>
+
+
+        <!-- COMMUNICATION DISCLAIMER -->
+        <p class="muted">
+
+          You can point to a message without using the voice.
+
+          This is a basic communication aid,
+          not a replacement for a speech-language
+          pathologist's personalized AAC system.
+
+          Speech playback depends on your device
+          and browser.
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+    <!-- CANCER INFORMATION LIBRARY -->
+    <section id="library" class="section">
+
+      <div class="section-head">
+
+        <div>
+          <p class="eyebrow">LEARN FROM TRUSTED SOURCES</p>
+          <h2>Cancer information library</h2>
+
+          <p>
+            Browse 20 cancer types.
+
+            These are not ranked by frequency in Delaware.
+
+            Educational descriptions are general
+            and do not replace advice from your
+            healthcare team.
+          </p>
+        </div>
+
+      </div>
+
+
+      <div class="panel">
+
+        <!-- SEARCH CANCER TYPES -->
+        <label for="cancerSearch">
+          Find a cancer type
+        </label>
+
+        <input
+          id="cancerSearch"
+          type="search"
+          placeholder="Search the library...">
+
+
+        <!-- CANCER TYPE GRID -->
+        <div
+          id="cancerGrid"
+          class="cancer-grid">
+        </div>
+
+
+        <!-- SELECTED CANCER DETAILS -->
+        <div
+          id="cancerDetail"
+          class="detail"
+          aria-live="polite">
+
+          <p class="muted">
+            Select a cancer type to read a short
+            overview and visit trusted resources.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <!-- INFORMATION SOURCE -->
+      <p class="source">
+
+        Information links lead to the
+
+        <a
+          href="https://www.cancer.gov/types"
+          target="_blank"
+          rel="noopener noreferrer">
+          National Cancer Institute cancer types directory
+        </a>.
+
+        General descriptions are educational summaries
+        and should be clinically reviewed before
+        real-world patient deployment.
+
+      </p>
+
+    </section>
+
+
+    <!-- PRIVACY SECTION -->
+    <section class="section">
+
+      <div class="panel privacy">
+
+        <div>
+
+          <p class="eyebrow">PRIVACY FIRST</p>
+
+          <h2>Your information is saved on this device</h2>
+
+          <p>
+            Entries are stored in this browser's
+            local storage.
+
+            There are no accounts or server uploads.
+
+            Anyone using the same browser profile
+            may be able to see the entries;
+            clearing browser data can erase them.
+
+            Avoid shared devices and avoid entering
+            sensitive clinical details.
+          </p>
+
+        </div>
+
+
+        <!-- DELETE SAVED DATA -->
+        <button
+          id="clearData"
+          class="btn danger"
+          type="button">
+          Delete all saved schedules
+        </button>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <strong>✳ NeuroBridge Delaware</strong>
+
+    <p>
+      Student-built prototype for cancer care
+      organization and education.
+
+      Not affiliated with any hospital
+      or cancer organization.
+    </p>
+
+    <p>
+      For urgent medical questions,
+      contact your healthcare team
+      or local emergency services.
+    </p>
+
+  </footer>
+
+
+  <!-- NOTIFICATION MESSAGE -->
+  <div
+    id="toast"
+    class="toast"
+    role="status"
+    aria-live="polite">
+  </div>
+
+
+  <!-- JAVASCRIPT FILE -->
+  <script src="script.js" defer></script>
+
+</body>
+</html>

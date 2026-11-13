@@ -1,0 +1,1117 @@
+
+/* =========================================
+   1. ROOT VARIABLES AND GLOBAL STYLES
+========================================= */
+
+:root {
+  --navy: #102e45;
+  --teal: #087d83;
+  --ink: #19364a;
+  --muted: #5b7180;
+  --bg: #f5f9fa;
+  --panel: #fff;
+  --line: #dbe7eb;
+  --pale: #e9f6f5;
+  --focus: #edb846;
+
+  font-family: Inter, ui-sans-serif, system-ui,
+    -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+
+  color: var(--ink);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  line-height: 1.6;
+}
+
+a {
+  color: var(--teal);
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+
+/* =========================================
+   2. ACCESSIBILITY AND KEYBOARD FOCUS
+========================================= */
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.skip {
+  position: absolute;
+  top: -70px;
+  left: 12px;
+  z-index: 10;
+  background: white;
+  padding: 8px;
+}
+
+.skip:focus {
+  top: 10px;
+}
+
+
+/* =========================================
+   3. HEADER AND NAVIGATION
+========================================= */
+
+.top {
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+
+  padding: 16px max(
+    20px,
+    calc((100vw - 1180px) / 2)
+  );
+
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 1.15rem;
+  font-weight: 850;
+  line-height: 1.1;
+  color: var(--navy);
+}
+
+.brand small {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.25em;
+  color: var(--teal);
+  margin-top: 4px;
+}
+
+.logo {
+  background: var(--teal);
+  color: white;
+  border-radius: 12px;
+  padding: 5px 13px;
+  font-size: 1.6rem;
+}
+
+.top nav {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.top nav a {
+  text-decoration: none;
+  font-weight: 650;
+  color: var(--ink);
+  font-size: 0.92rem;
+}
+
+.quiet {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 10px;
+  padding: 8px;
+  color: var(--ink);
+}
+
+
+/* =========================================
+   4. MAIN CONTENT AND HERO SECTION
+========================================= */
+
+main {
+  max-width: 1180px;
+  margin: auto;
+  padding: 0 22px;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  align-items: center;
+  gap: 35px;
+  padding: 76px 0 55px;
+}
+
+.eyebrow {
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  font-size: 0.74rem;
+  color: var(--teal);
+  margin: 0 0 12px;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  letter-spacing: -0.05em;
+  line-height: 1.12;
+  color: var(--navy);
+  margin: 0 0 20px;
+}
+
+h2 {
+  font-size: clamp(1.7rem, 3vw, 2.3rem);
+  line-height: 1.2;
+  color: var(--navy);
+  letter-spacing: -0.035em;
+  margin: 0 0 8px;
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin: 0 0 16px;
+  color: var(--navy);
+}
+
+.hero p:not(.eyebrow) {
+  font-size: 1.13rem;
+  max-width: 610px;
+  color: var(--muted);
+}
+
+
+/* =========================================
+   5. BUTTONS AND ACTIONS
+========================================= */
+
+.actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 24px;
+}
+
+.btn {
+  display: inline-block;
+  border: 1px solid var(--teal);
+  border-radius: 11px;
+
+  background: var(--teal);
+  color: #fff;
+  text-decoration: none;
+  font-weight: 750;
+
+  padding: 11px 17px;
+  transition: transform 0.15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn.secondary {
+  background: white;
+  color: var(--teal);
+}
+
+.btn.danger {
+  background: #8c3042;
+  border-color: #8c3042;
+}
+
+
+/* =========================================
+   6. HERO ARTWORK
+========================================= */
+
+.hero-art {
+  background: linear-gradient(
+    145deg,
+    #d5f1ed,
+    #e9f2ff
+  );
+
+  border-radius: 28px;
+  min-height: 310px;
+
+  display: grid;
+  place-items: center;
+
+  position: relative;
+  overflow: hidden;
+}
+
+.art-ring {
+  border: 25px solid #c0e4e5;
+  width: 205px;
+  height: 205px;
+  border-radius: 50%;
+
+  display: grid;
+  place-items: center;
+
+  background: #fff;
+  color: var(--teal);
+  font-size: 6rem;
+
+  box-shadow: 0 15px 45px #0e6e7222;
+}
+
+.art-note {
+  position: absolute;
+  bottom: 22px;
+  right: 22px;
+
+  background: #fff;
+  padding: 14px 22px;
+  border-radius: 13px;
+
+  box-shadow: 0 8px 30px #2443a422;
+  font-size: 0.9rem;
+}
+
+
+/* =========================================
+   7. IMPORTANT MEDICAL NOTICE
+========================================= */
+
+.notice {
+  padding: 17px 20px;
+  border-left: 5px solid #ca9654;
+  background: #fff7e9;
+  border-radius: 8px;
+  font-size: 0.94rem;
+}
+
+
+/* =========================================
+   8. PAGE SECTIONS
+========================================= */
+
+.section {
+  padding: 55px 0 10px;
+  scroll-margin-top: 25px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: center;
+
+  margin-bottom: 22px;
+  flex-wrap: wrap;
+}
+
+.section-head p:not(.eyebrow) {
+  color: var(--muted);
+  margin: 7px 0;
+}
+
+
+/* =========================================
+   9. DASHBOARD STATISTICS
+========================================= */
+
+.stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.stat,
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 17px;
+  box-shadow: 0 4px 22px #103a4910;
+}
+
+.stat {
+  padding: 20px;
+}
+
+.stat span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.stat strong {
+  display: block;
+  color: var(--navy);
+  font-size: 1.7rem;
+  margin-top: 6px;
+  overflow-wrap: anywhere;
+}
+
+.stat:last-child strong {
+  font-size: 1.1rem;
+}
+
+
+/* =========================================
+   10. PANELS AND TWO-COLUMN LAYOUT
+========================================= */
+
+.panel {
+  padding: 25px;
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+
+/* =========================================
+   11. FORMS AND INPUT FIELDS
+========================================= */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.form h3 {
+  margin-bottom: 0;
+}
+
+label {
+  display: block;
+  font-weight: 700;
+  font-size: 0.91rem;
+}
+
+input,
+textarea,
+select {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+
+  border: 1px solid #bbd0d7;
+  background: #fff;
+  color: var(--ink);
+  border-radius: 9px;
+
+  padding: 11px 12px;
+  min-height: 44px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form .btn {
+  align-self: start;
+}
+
+
+/* =========================================
+   12. TEXT UTILITIES
+========================================= */
+
+.muted {
+  color: var(--muted);
+}
+
+.tiny {
+  font-size: 0.83rem;
+}
+
+
+/* =========================================
+   13. APPOINTMENT AND MEDICATION ENTRIES
+========================================= */
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.entry {
+  border: 1px solid var(--line);
+  border-radius: 11px;
+  padding: 13px 15px;
+  background: #fbfefe;
+  overflow-wrap: anywhere;
+}
+
+.entry strong {
+  display: block;
+  color: var(--navy);
+}
+
+.entry small {
+  display: block;
+  color: var(--muted);
+}
+
+.entry p {
+  margin: 6px 0;
+}
+
+.entry button {
+  background: transparent;
+  border: 0;
+  color: #a13247;
+  text-decoration: underline;
+  padding: 5px 0;
+  font-weight: 650;
+}
+
+
+/* =========================================
+   14. CANCER INFORMATION LIBRARY
+========================================= */
+
+.cancer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin: 18px 0;
+}
+
+.cancer-choice {
+  padding: 13px 10px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #f7fbfc;
+
+  text-align: left;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.cancer-choice:hover,
+.cancer-choice.active {
+  background: var(--pale);
+  border-color: var(--teal);
+}
+
+.detail {
+  background: var(--pale);
+  padding: 20px;
+  border-radius: 12px;
+  min-height: 95px;
+}
+
+.detail h3 {
+  margin-bottom: 7px;
+}
+
+.detail p {
+  margin: 5px 0 12px;
+}
+
+.source {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+
+/* =========================================
+   15. PRIVACY SECTION
+========================================= */
+
+.privacy {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.privacy p {
+  max-width: 800px;
+}
+
+
+/* =========================================
+   16. NOTIFICATION TOAST
+========================================= */
+
+.toast {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+
+  max-width: 340px;
+  background: var(--navy);
+  color: #fff;
+
+  padding: 14px 20px;
+  border-radius: 12px;
+
+  box-shadow: 0 10px 35px #0003;
+  display: none;
+  z-index: 20;
+}
+
+.toast.show {
+  display: block;
+}
+
+
+/* =========================================
+   17. FOOTER
+========================================= */
+
+footer {
+  background: var(--navy);
+  color: #d7e6ea;
+  text-align: center;
+
+  padding: 34px 20px;
+  margin-top: 60px;
+  font-size: 0.9rem;
+}
+
+footer strong {
+  color: #fff;
+  font-size: 1.2rem;
+}
+
+
+/* =========================================
+   18. ACCESSIBILITY MODES
+========================================= */
+
+/* Larger text mode */
+
+body.large {
+  font-size: 1.2rem;
+}
+
+/* High contrast mode */
+
+body.contrast {
+  --navy: #000;
+  --teal: #005c5c;
+  --ink: #000;
+  --muted: #242424;
+  --bg: #fff;
+  --panel: #fff;
+  --line: #333;
+  --pale: #e5f6f6;
+}
+
+body.contrast .hero-art {
+  background: #e5f6f6;
+}
+
+
+/* =========================================
+   19. RESPONSIVE DESIGN - TABLETS
+========================================= */
+
+@media (max-width: 850px) {
+
+  .hero,
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 45px 0;
+  }
+
+  .hero-art {
+    min-height: 230px;
+  }
+
+  .cancer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .top {
+    justify-content: center;
+  }
+
+  .stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+
+
+/* =========================================
+   20. RESPONSIVE DESIGN - MOBILE
+========================================= */
+
+@media (max-width: 520px) {
+
+  main {
+    padding: 0 14px;
+  }
+
+  .top nav {
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hero-art {
+    display: none;
+  }
+
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .cancer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .privacy {
+    flex-direction: column;
+    align-items: start;
+  }
+
+}
+
+
+/* =========================================
+   21. PRINT STYLES
+========================================= */
+
+@media print {
+
+  .top,
+  .hero,
+  .notice,
+  .form,
+  .btn,
+  .quiet,
+  .cancer-grid,
+  .source,
+  .privacy,
+  footer,
+  #library,
+  .toast {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+  }
+
+  main {
+    max-width: none;
+  }
+
+  .section {
+    padding: 5px 0;
+  }
+
+  .two {
+    display: block;
+  }
+
+  .panel,
+  .stat {
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .stats {
+    display: none;
+  }
+
+  #appointments .panel:last-child,
+  #medications .panel:last-child {
+    display: block;
+  }
+
+}
+
+
+/* =========================================
+   22. ACCESSIBLE, LOW-DISTRACTION LAYOUT
+========================================= */
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
+}
+
+body {
+  line-height: 1.65;
+}
+
+.top {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.top nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.top nav a {
+  padding: 10px 12px;
+}
+
+
+/* =========================================
+   23. SIMPLIFIED HERO SECTION
+========================================= */
+
+.simple-hero {
+  padding: 36px 30px;
+  min-height: auto;
+  display: block;
+}
+
+.simple-hero h1 {
+  max-width: none;
+  font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+.simple-hero p {
+  max-width: 700px;
+}
+
+
+/* =========================================
+   24. LARGE QUICK ACCESS CARDS
+========================================= */
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 20px 0 30px;
+}
+
+.quick-card {
+  border: 2px solid #bdd5dc;
+  border-radius: 22px;
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+
+  padding: 26px;
+  color: #102b3a;
+  text-decoration: none;
+  min-height: 160px;
+
+  box-shadow: 0 6px 18px #0b31400d;
+}
+
+.quick-card span {
+  font-size: 2.1rem;
+}
+
+.quick-card strong {
+  font-size: 1.45rem;
+}
+
+.quick-card small {
+  font-size: 1rem;
+  color: #395363;
+}
+
+.quick-card.featured {
+  background: #e7f7f4;
+  border-color: #368a81;
+}
+
+.quick-card:hover,
+.quick-card:focus-visible {
+  outline: 3px solid #0b756c;
+  outline-offset: 2px;
+}
+
+
+/* =========================================
+   25. ACCESSIBLE SECTION SPACING
+========================================= */
+
+.section {
+  scroll-margin-top: 110px;
+}
+
+.form input,
+.form select,
+.form textarea,
+.custom-message textarea {
+  font-size: 1.1rem;
+  min-height: 52px;
+}
+
+.btn,
+button {
+  min-height: 46px;
+}
+
+
+/* =========================================
+   26. COMMUNICATION PANEL
+========================================= */
+
+.comm-panel {
+  padding: 26px;
+}
+
+.comm-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+
+/* =========================================
+   27. COMMUNICATION MESSAGE DISPLAY
+========================================= */
+
+.message-display {
+  border: 3px solid #0b756c;
+  background: #eaf8f4;
+  border-radius: 18px;
+
+  min-height: 116px;
+  padding: 24px;
+
+  font-size: clamp(1.6rem, 3vw, 2.5rem);
+  font-weight: 750;
+  color: #102b3a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  margin-bottom: 22px;
+  overflow-wrap: anywhere;
+}
+
+
+/* =========================================
+   28. COMMUNICATION BUTTON GRID
+========================================= */
+
+.comm-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.comm-phrase {
+  min-height: 128px;
+  border: 2px solid #b2cbd2;
+  border-radius: 18px;
+  background: white;
+  color: #102b3a;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px;
+  gap: 7px;
+
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.18rem;
+  font-weight: 700;
+  text-align: center;
+  line-height: 1.3;
+}
+
+.comm-phrase .emoji {
+  font-size: 2.1rem;
+}
+
+.comm-phrase:hover,
+.comm-phrase:focus-visible {
+  border-color: #08766b;
+  outline: 3px solid #08766b;
+  outline-offset: 2px;
+  background: #eaf8f4;
+}
+
+.comm-phrase:active {
+  transform: scale(0.98);
+}
+
+
+/* =========================================
+   29. CUSTOM COMMUNICATION MESSAGES
+========================================= */
+
+.custom-message {
+  border-top: 1px solid #c9dce1;
+  margin-top: 24px;
+  padding-top: 20px;
+}
+
+.custom-message label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.custom-message textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.custom-message .actions {
+  margin: 12px 0;
+}
+
+
+/* =========================================
+   30. ADDITIONAL ACCESSIBILITY STYLES
+========================================= */
+
+.notice {
+  font-size: 1rem;
+}
+
+.large .comm-phrase {
+  font-size: 1.45rem;
+}
+
+.large .quick-card strong {
+  font-size: 1.8rem;
+}
+
+
+/* =========================================
+   31. HIGH CONTRAST COMMUNICATION MODE
+========================================= */
+
+.contrast .comm-phrase {
+  background: #000;
+  color: #fff;
+  border-color: #fff;
+}
+
+.contrast .message-display {
+  background: #000;
+  color: #fff;
+  border-color: #fff;
+}
+
+.contrast .quick-card {
+  background: #000;
+  color: #fff;
+  border-color: #fff;
+}
+
+.contrast .quick-card small {
+  color: #fff;
+}
+
+
+/* =========================================
+   32. RESPONSIVE QUICK CARDS AND AAC
+========================================= */
+
+@media (max-width: 720px) {
+
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comm-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .comm-phrase {
+    min-height: 118px;
+  }
+
+  .comm-panel {
+    padding: 16px;
+  }
+
+  .simple-hero {
+    padding: 24px 18px;
+  }
+
+  .top nav {
+    width: 100%;
+    overflow: auto;
+  }
+
+  .quick-card {
+    min-height: 130px;
+  }
+
+}
+
+
+/* =========================================
+   33. VERY SMALL MOBILE SCREENS
+========================================= */
+
+@media (max-width: 390px) {
+
+  .comm-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .comm-phrase {
+    min-height: 90px;
+  }
+
+}
+
+
+/* =========================================
+   34. REDUCED MOTION ACCESSIBILITY
+========================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *:before,
+  *:after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}
